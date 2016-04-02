@@ -68,7 +68,7 @@ router.put('/produto/:id', function(req, res, next){
 				return res.status(500).json({success: false, data: err});
 			}
 
-			if(produto.valor !== null){
+			if(produto.valor !== null && produto.valor > 0){
 				client.query("UPDATE csc.preco SET ativo=false WHERE produto_id = $1", [id], function(err, result){
 					if(err){
 						console.log(err);
